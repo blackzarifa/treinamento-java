@@ -43,7 +43,7 @@ public class SqlStatement {
 		}
 		
 		setConnection(conn);
-		String query = "INSERT INTO curso VALUES (500, 'teste')";
+		String query = "select * from curso";
 		execute(query);
 	}
 	
