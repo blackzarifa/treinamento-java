@@ -97,6 +97,24 @@ public class EstudanteDAO {
 		}
 	}
 	
+	// Get all from table
+	public void findAll() {
+		try {
+			String queryString = "SELECT * FROM estudante";
+			
+			conn = getConnection();
+			pstm = conn.prepareStatement(queryString);
+			
+			/*
+			 * TODO: finish function
+			 */
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(conn, pstm);
+		}
+	}
+	
 	/*
 	public static void setConnection(Connection connection) {
 		conn = connection;
