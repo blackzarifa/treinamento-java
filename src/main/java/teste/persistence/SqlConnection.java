@@ -38,19 +38,6 @@ public class SqlConnection {
 		return conn;
 	}
 	
-	// Closes connection
-	public void closeConnection(Connection conn) {
-		try {
-			if (conn != null) {
-				conn.close();
-				System.out.println("Conexão encerrada.");
-			}
-		} catch (SQLException e) {
-			System.err.println("Erro ao fechar a conexão.");
-			e.printStackTrace();
-		}
-	}
-		
 	
 	// main for testing
 	/*
@@ -61,7 +48,9 @@ public class SqlConnection {
 	 * System.out.println("Conexão estabelecida com sucesso."); } catch
 	 * (SQLException e) {
 	 * System.err.println("Erro ao conectar com o banco de dados.");
-	 * e.printStackTrace(); } finally { sqlConn.closeConnection(conn); } }
+	 * e.printStackTrace(); } finally { try { if (conn != null) { conn.close();
+	 * System.out.println("Conexão encerrada."); } } catch (SQLException e) {
+	 * System.err.println("Erro ao fechar a conexão."); e.printStackTrace(); } } }
 	 */
 	 
 }
