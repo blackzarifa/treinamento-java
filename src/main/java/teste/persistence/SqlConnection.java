@@ -52,7 +52,7 @@ public class SqlConnection {
 	}
 		
 	
-	// main para testes
+	// main for testing
 	/*
 	 * public static void main(String[] args) { SqlConnection sqlConn =
 	 * SqlConnection.getInstance(); Connection conn = null;
