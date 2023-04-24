@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SqlStatement {
+public class EstudanteDAO {
 	
 	private static Connection conn = null;
 	private static Statement stmt = null;
