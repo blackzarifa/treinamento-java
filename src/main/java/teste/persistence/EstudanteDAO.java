@@ -78,6 +78,25 @@ public class EstudanteDAO {
 		}
 	}
 	
+	// Delete from database
+	public void delete(EstudanteBean estudanteBean) {
+		try {
+			String queryString = "DELETE FROM estudante WHERE id=?";
+			
+			conn = getConnection();
+			pstm = conn.prepareStatement(queryString);
+			
+			pstm.setInt(1, estudanteBean.getId());
+			
+			pstm.executeUpdate();
+			System.out.println("Dados deletados.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(conn, pstm);
+		}
+	}
+	
 	/*
 	public static void setConnection(Connection connection) {
 		conn = connection;
