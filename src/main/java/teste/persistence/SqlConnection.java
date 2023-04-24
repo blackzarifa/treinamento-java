@@ -14,6 +14,7 @@ public class SqlConnection {
 	private static SqlConnection sqlConnection = null; 
 	
 	
+	// Sets driver
 	private SqlConnection() {
 		try {
 			Class.forName(DRIVER_CLASS_NAME);
@@ -23,6 +24,7 @@ public class SqlConnection {
 		}
 	}
 	
+	// Creates and stores the instance of sqlConnection
 	public static SqlConnection getInstance() {
 		if (sqlConnection == null)
 			sqlConnection = new SqlConnection();
@@ -30,11 +32,13 @@ public class SqlConnection {
 		return sqlConnection;
 	}
 	
+	// Connects to database with URL, USERNAME and PASSWORD variables
 	public Connection getConnection() throws SQLException {
 		Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		return conn;
 	}
 	
+	// Closes connection
 	public void closeConnection(Connection conn) {
 		try {
 			if (conn != null) {
