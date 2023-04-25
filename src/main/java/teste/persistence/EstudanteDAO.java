@@ -114,7 +114,7 @@ public class EstudanteDAO {
 			while (resultSet.next()) {
 				System.out.println("ID: " + resultSet.getInt("id")
 								+ ", Nome: " + resultSet.getString("nome")
-								+ ", Matricula: " + resultSet.getString("maticula")
+								+ ", Matricula: " + resultSet.getString("matricula")
 								+ ", Aniversario: " + resultSet.getDate("aniversario")
 								+ ", ID-Curso: " + resultSet.getInt("FK_curso"));
 			}
@@ -127,10 +127,11 @@ public class EstudanteDAO {
 	
 	
 	
-	
-	
 	// main for testing
-	/* public static void main(String[] args) {} */
+	 public static void main(String[] args) {
+		 EstudanteDAO dao = new EstudanteDAO();
+		 dao.findAll();
+	 } 
 	 
 	
 }
