@@ -115,32 +115,11 @@ public class EstudanteDAO {
 		}
 	}
 	
-	/*
-	public static void setConnection(Connection connection) {
-		conn = connection;
-		
-		try {
-			pstm = conn.createStatement();
-		} catch (SQLException e) {
-			System.err.println("Erro criando a declaração.");
-			e.printStackTrace();
-		}
-	}
-	
-	public static void execute(String query) {
-		try {
-			pstm.execute(query);
-		} catch (SQLException e) {
-			System.err.println("Erro executando a query.");
-			e.printStackTrace();
-		}
-		System.out.println("Query executada.");
-	}
-	*/
 	
 	
 	
-	// main para testes
+	
+	// main for testing
 	/*
 	 * public static void main(String[] args) { Connection conn = null; try { conn =
 	 * SqlConnection.getConnection(); } catch (SQLException e) {
