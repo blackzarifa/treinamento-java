@@ -3,6 +3,8 @@ package teste.persistence;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 
 public class EstudanteDAO {
 	
@@ -97,17 +99,25 @@ public class EstudanteDAO {
 		}
 	}
 	
-	// Get all from table
+	// Find all from table
 	public void findAll() {
+		ResultSet resultSet = null;
+		
 		try {
 			String queryString = "SELECT * FROM estudante";
 			
 			conn = getConnection();
 			pstm = conn.prepareStatement(queryString);
 			
-			/*
-			 * TODO: finish function
-			 */
+			resultSet = pstm.executeQuery();
+			
+			while (resultSet.next()) {
+				System.out.println("ID: " + resultSet.getInt("id")
+								+ ", Nome: " + resultSet.getString("nome")
+								+ ", Matricula: " + resultSet.getString("maticula")
+								+ ", Aniversario: " + resultSet.getDate("aniversario")
+								+ ", ID-Curso: " + resultSet.getInt("FK_curso"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -120,12 +130,7 @@ public class EstudanteDAO {
 	
 	
 	// main for testing
-	/*
-	 * public static void main(String[] args) { Connection conn = null; try { conn =
-	 * SqlConnection.getConnection(); } catch (SQLException e) {
-	 * System.err.println(e.getMessage()); e.printStackTrace(); }
-	 * 
-	 * setConnection(conn); String query = "select * from curso"; execute(query); }
-	 */
+	/* public static void main(String[] args) {} */
+	 
 	
 }
