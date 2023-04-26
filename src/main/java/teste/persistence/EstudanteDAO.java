@@ -1,11 +1,12 @@
 package teste.persistence;
 
 import java.sql.Connection;
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import teste.entity.EstudanteBean;
 
 public class EstudanteDAO {
 	
@@ -129,17 +130,14 @@ public class EstudanteDAO {
 	
 	
 	// main for testing
-	 public static void main(String[] args) {
-		 EstudanteDAO dao = new EstudanteDAO();
-		 dao.findAll();
-		 System.out.println("-------------------------------------------------");
-		 EstudanteBean estudante1 = new EstudanteBean(10, "Test", "123456", Date.valueOf("2000-01-01"), 1);
-		 dao.add(estudante1);
-		 dao.findAll();
-		 System.out.println("-------------------------------------------------");
-		 dao.delete(estudante1);
-		 dao.findAll();
-	 } 
+	/*
+	 * public static void main(String[] args) { EstudanteDAO dao = new
+	 * EstudanteDAO(); dao.findAll();
+	 * System.out.println("-------------------------------------------------");
+	 * EstudanteBean estudante1 = new EstudanteBean(10, "Test", "123456",
+	 * Date.valueOf("2000-01-01"), 1); dao.add(estudante1); dao.findAll();
+	 * System.out.println("-------------------------------------------------");
+	 * dao.delete(estudante1); dao.findAll(); }
+	 */
 	 
-	
 }
