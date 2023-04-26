@@ -1,4 +1,4 @@
-package teste.persistence;
+package teste.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
