@@ -20,9 +20,9 @@ public class EstudanteService {
 	}
 	
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	public String test() {
-		return "TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST";
+		return "TEST";
 	}
 	
 }
