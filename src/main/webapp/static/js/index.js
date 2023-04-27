@@ -1,5 +1,5 @@
 // GET "estudantes"
-axios.get('/rest/estudantes')
+axios.get('http://localhost:8080/treinamento-java/rest/estudantes')
     .then(response => {
         const estudantes = response.data;
 
