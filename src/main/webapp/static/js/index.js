@@ -1,6 +1,3 @@
-// Load Axios
-const axios = require('axios');
-
 // GET "estudantes"
 axios.get('/rest/estudantes')
     .then(response => {
