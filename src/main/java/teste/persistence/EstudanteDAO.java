@@ -1,12 +1,15 @@
 package teste.persistence;
 
+import teste.entity.EstudanteBean;
+
 import java.sql.Connection;
 //import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
+import java.util.ArrayList;
 
-import teste.entity.EstudanteBean;
 
 public class EstudanteDAO {
 	
@@ -102,8 +105,9 @@ public class EstudanteDAO {
 	}
 	
 	// Find all from table
-	public void findAll() {
+	public List<EstudanteBean> findAll() {
 		ResultSet resultSet = null;
+		List<EstudanteBean> estudantes = new ArrayList<>();
 		
 		try {
 			String queryString = "SELECT * FROM estudante";
@@ -114,17 +118,21 @@ public class EstudanteDAO {
 			resultSet = pstm.executeQuery();
 			
 			while (resultSet.next()) {
-				System.out.println("ID: " + resultSet.getInt("id")
-								+ ", Nome: " + resultSet.getString("nome")
-								+ ", Matricula: " + resultSet.getString("matricula")
-								+ ", Aniversario: " + resultSet.getDate("aniversario")
-								+ ", ID-Curso: " + resultSet.getInt("FK_curso"));
+				EstudanteBean estudante = new EstudanteBean();
+				estudante.setId(resultSet.getInt("id"));
+				estudante.setNome(resultSet.getString("nome"));
+	            estudante.setMatricula(resultSet.getString("matricula"));
+	            estudante.setAniversario(resultSet.getDate("aniversario"));
+	            estudante.setFK_curso(resultSet.getInt("FK_curso"));
+	            estudantes.add(estudante);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeConnection(conn, pstm);
 		}
+		
+		return estudantes;
 	}
 	
 	
