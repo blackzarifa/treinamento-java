@@ -14,7 +14,7 @@ public class EstudanteBean implements Serializable {
 	private Date aniversario;
 	private int FK_curso;
 	
-	
+	public EstudanteBean() {}
 	public EstudanteBean(int id, String nome, String matricula, Date aniversario, int FK_curso) {
 		this.setId(id);
 		this.setNome(nome);
