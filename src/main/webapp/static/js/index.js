@@ -14,7 +14,7 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes')
                             '<td>' + estudante.nome + '</td>' +
                             '<td>' + estudante.matricula + '</td>' +
                             '<td>' + dataAniversario + '</td>' +
-                            '<td>' + estudante.FK_curso + '</td>';
+                            '<td>' + estudante.fk_curso + '</td>';
             table.appendChild(row);
         });
     })
