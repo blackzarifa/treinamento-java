@@ -42,16 +42,15 @@ public class EstudanteDAO {
 	// Add to database
 	public void add(EstudanteBean estudanteBean) {		
 		try {
-			String queryString = "INSERT INTO estudante(id, nome, matricula, aniversario, FK_curso) VALUES(?,?,?,?,?)";
+			String queryString = "INSERT INTO estudante(nome, matricula, aniversario, FK_curso) VALUES(?,?,?,?,?)";
 			
 			conn = getConnection();
 			pstm = conn.prepareStatement(queryString);
 			
-			pstm.setInt(1, estudanteBean.getId());
-			pstm.setString(2, estudanteBean.getNome());
-			pstm.setString(3, estudanteBean.getMatricula());
-			pstm.setDate(4, estudanteBean.getAniversario());
-			pstm.setInt(5, estudanteBean.getFK_curso());
+			pstm.setString(1, estudanteBean.getNome());
+			pstm.setString(2, estudanteBean.getMatricula());
+			pstm.setDate(3, estudanteBean.getAniversario());
+			pstm.setInt(4, estudanteBean.getFK_curso());
 			
 			pstm.executeUpdate();
 			System.out.println("Estudante adicionado.");
