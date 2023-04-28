@@ -1,4 +1,6 @@
-// GET "estudantes"
+const form = document.querySelector('form');
+
+// GET all from database
 axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
     .then(response => {
         const estudantes = response.data;
@@ -19,3 +21,15 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
         });
     })
     .catch(e => console.log(e));
+
+// POST new values
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    
+    axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', formData)
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(e => console.log(e));
+});
