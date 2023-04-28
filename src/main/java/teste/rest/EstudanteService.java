@@ -39,8 +39,8 @@ public class EstudanteService extends superRest {
 	
 	@Path("/add")
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response add(
 			@FormParam("nome") String nome,
             @FormParam("matricula") String matricula,
