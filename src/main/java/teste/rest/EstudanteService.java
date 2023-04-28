@@ -24,10 +24,12 @@ public class EstudanteService extends superRest {
 	}
 	
 	
+	@Path("/getall")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<EstudanteBean> getAll() {
 		List<EstudanteBean> estudantes = dao.findAll();
 		return estudantes;
 	}
+
 }
