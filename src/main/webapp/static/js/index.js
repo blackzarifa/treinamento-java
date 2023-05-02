@@ -21,7 +21,7 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
             // Add clickable function to row
             row.addEventListener('click', () => {
                 // Get row data
-                const rowData = row.getElementsByTagName('td');
+                //const rowData = row.getElementsByTagName('td');
                 const id = estudante.id;
                 const nome = estudante.nome;
                 const matricula = estudante.matricula;
