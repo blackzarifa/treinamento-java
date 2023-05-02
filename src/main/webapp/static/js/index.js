@@ -5,6 +5,11 @@ const form = document.querySelector('form');
 axios.get('http://localhost:8080/treinamento-java/rest/cursos/getall')
     .then(response => {
         const cursos = response.data;
+
+        const select = document.getElementById('curso-select');
+        cursos.forEach(curso => {
+            let option = document.createElement('option');
+        })
     })
     .catch(e => console.log(e));
 
