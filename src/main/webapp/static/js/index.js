@@ -12,6 +12,7 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
 
             // Create object row
             let row = document.createElement('tr');
+            row.classList.add('row-hover');
             row.innerHTML = '<td>' + estudante.id + '</td>' +
                             '<td>' + estudante.nome + '</td>' +
                             '<td>' + estudante.matricula + '</td>' +

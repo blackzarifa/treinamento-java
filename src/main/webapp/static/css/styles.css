@@ -1,3 +1,4 @@
-tr:hover {
-    background:#c0c0c0;
+.row-hover tr:hover {
+    background: #c0c0c0;
+    cursor: pointer;
 }
