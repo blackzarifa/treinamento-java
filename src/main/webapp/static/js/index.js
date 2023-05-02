@@ -3,7 +3,9 @@ const form = document.querySelector('form');
 
 // Get all from 'curso'
 axios.get('http://localhost:8080/treinamento-java/rest/cursos/getall')
-    .then()
+    .then(response => {
+        const cursos = response.data;
+    })
     .catch(e => console.log(e));
 
 
