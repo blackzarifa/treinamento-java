@@ -28,6 +28,7 @@ form.addEventListener('submit', (event) => {
     const formData = new FormData(event.target);
     const data = {};
     for (const [key, value] of formData.entries()) data[key] = value;
+    data.FK_curso = parseInt(data.FK_curso);
     console.log(data);
     
     axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', JSON.stringify(data), {
