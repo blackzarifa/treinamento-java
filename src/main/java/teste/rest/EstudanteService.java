@@ -10,7 +10,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -36,26 +35,15 @@ public class EstudanteService extends superRest {
 		return estudantes;
 	}
 	
-	
 	@Path("/add")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response add(
-			@FormParam("nome") String nome,
-            @FormParam("matricula") String matricula,
-            @FormParam("aniversario") Date aniversario,
-            @FormParam("fk_curso") int fk_curso
-			) {
-		EstudanteBean estudante = new EstudanteBean();
-		estudante.setNome(nome);
-		estudante.setMatricula(matricula);
-		estudante.setAniversario(aniversario);
-		estudante.setFK_curso(fk_curso);
-		
+	public Response add(EstudanteBean estudante) {		
 		EstudanteDAO dao = new EstudanteDAO();
 		dao.add(estudante);
 		
 		return Response.ok().build();
 	}
+	
 }

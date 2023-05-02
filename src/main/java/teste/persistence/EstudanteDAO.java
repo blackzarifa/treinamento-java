@@ -42,7 +42,7 @@ public class EstudanteDAO {
 	// Add to database
 	public void add(EstudanteBean estudanteBean) {		
 		try {
-			String queryString = "INSERT INTO estudante(nome, matricula, aniversario, FK_curso) VALUES(?,?,?,?,?)";
+			String queryString = "INSERT INTO estudante(nome, matricula, aniversario, FK_curso) VALUES(?,?,?,?)";
 			
 			conn = getConnection();
 			pstm = conn.prepareStatement(queryString);
@@ -122,7 +122,7 @@ public class EstudanteDAO {
 				estudante.setNome(resultSet.getString("nome"));
 	            estudante.setMatricula(resultSet.getString("matricula"));
 	            estudante.setAniversario(resultSet.getDate("aniversario"));
-	            estudante.setFK_curso(resultSet.getInt("fk_curso"));
+	            estudante.setFK_curso(resultSet.getInt("FK_curso"));
 	            estudantes.add(estudante);
 			}
 		} catch (SQLException e) {
