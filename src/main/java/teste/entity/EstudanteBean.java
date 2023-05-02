@@ -3,6 +3,8 @@ package teste.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class EstudanteBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -12,6 +14,7 @@ public class EstudanteBean implements Serializable {
 	private String nome;
 	private String matricula;
 	private Date aniversario;
+	@JsonProperty("FK_curso")
 	private int FK_curso;
 	
 	public EstudanteBean() {}
