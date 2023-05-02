@@ -41,17 +41,11 @@ public class EstudanteService extends superRest {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response add(
-			@FormParam("nome") String nome,
-            @FormParam("matricula") String matricula,
-            @FormParam("aniversario") Date aniversario,
-            @FormParam("fk_curso") int fk_curso
-			) {
-		EstudanteBean estudante = new EstudanteBean();
-		estudante.setNome(nome);
-		estudante.setMatricula(matricula);
-		estudante.setAniversario(aniversario);
-		estudante.setFK_curso(fk_curso);
+	public Response add(EstudanteBean estudante) {
+		/*
+		 * estudante.setNome(nome); estudante.setMatricula(matricula);
+		 * estudante.setAniversario(aniversario); estudante.setFK_curso(fk_curso);
+		 */
 		
 		EstudanteDAO dao = new EstudanteDAO();
 		dao.add(estudante);
