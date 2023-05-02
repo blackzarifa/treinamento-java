@@ -30,7 +30,7 @@ form.addEventListener('submit', (event) => {
     const data = {};
     for (const [key, value] of formData.entries()) data[key] = value;
     
-    axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', data, {
+    axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', JSON.stringify(data), {
 		headers: {
             'Content-Type': 'application/json'
         }
