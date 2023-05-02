@@ -41,12 +41,7 @@ public class EstudanteService extends superRest {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response add(EstudanteBean estudante) {
-		/*
-		 * estudante.setNome(nome); estudante.setMatricula(matricula);
-		 * estudante.setAniversario(aniversario); estudante.setFK_curso(fk_curso);
-		 */
-		
+	public Response add(EstudanteBean estudante) {		
 		EstudanteDAO dao = new EstudanteDAO();
 		dao.add(estudante);
 		
