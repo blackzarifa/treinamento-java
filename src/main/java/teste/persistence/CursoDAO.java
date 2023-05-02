@@ -1,10 +1,8 @@
 package teste.persistence;
 
 import teste.entity.CursoBean;
-import teste.entity.EstudanteBean;
 
 import java.sql.Connection;
-//import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -115,6 +113,7 @@ public class CursoDAO {
 				CursoBean curso = new CursoBean();
 				curso.setId(resultSet.getInt("id"));
 				curso.setNome(resultSet.getString("nome"));
+				cursos.add(curso);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
