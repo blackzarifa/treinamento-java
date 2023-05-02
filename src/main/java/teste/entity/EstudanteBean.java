@@ -63,8 +63,8 @@ public class EstudanteBean implements Serializable {
 		return FK_curso;
 	}
 
-	public void setFK_curso(int fK_curso) {
-		FK_curso = fK_curso;
+	public void setFK_curso(int FK_curso) {
+		this.FK_curso = FK_curso;
 	}
 	
 }
