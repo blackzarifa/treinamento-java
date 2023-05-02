@@ -1,5 +1,12 @@
 const form = document.querySelector('form');
 
+
+// Get all from 'curso'
+axios.get('http://localhost:8080/treinamento-java/rest/cursos/getall')
+    .then()
+    .catch(e => console.log(e));
+
+
 // GET all from 'estudante'
 axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
     .then(response => {
