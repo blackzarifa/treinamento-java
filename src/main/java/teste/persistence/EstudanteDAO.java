@@ -42,7 +42,7 @@ public class EstudanteDAO {
 	// Add to database
 	public void add(EstudanteBean estudanteBean) {		
 		try {
-			String queryString = "INSERT INTO estudante(nome, matricula, aniversario, FK_curso) VALUES(?,?,?,?,?)";
+			String queryString = "INSERT INTO estudante(nome, matricula, aniversario, FK_curso) VALUES(?,?,?,?)";
 			
 			conn = getConnection();
 			pstm = conn.prepareStatement(queryString);
