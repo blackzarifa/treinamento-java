@@ -18,6 +18,24 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
                             '<td>' + estudante.matricula + '</td>' +
                             '<td>' + dataAniversario + '</td>' +
                             '<td>' + estudante.FK_curso + '</td>';
+            // Make row clickable
+            row.addEventListener('click', () => {
+                // Get row data
+                const rowData = row.getElementsByTagName('td');
+                const id = rowData[0].textContent;
+                const nome = rowData[1].textContent;
+                const matricula = rowData[2].textContent;
+                const aniversario = rowData[3].textContent;
+                const curso = rowData[4].textContent;
+
+                // Fill form with data
+                document.getElementById('id').value = id;
+                document.getElementById('nome').value = nome;
+                document.getElementById('matricula').value = matricula;
+                document.getElementById('aniversario').value = aniversario;
+                document.getElementById('FK_curso').value = curso;
+            });
+
             table.appendChild(row);
         });
     })
