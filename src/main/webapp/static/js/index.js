@@ -18,15 +18,15 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
                             '<td>' + estudante.matricula + '</td>' +
                             '<td>' + dataAniversario + '</td>' +
                             '<td>' + estudante.FK_curso + '</td>';
-            // Make row clickable
+            // Add clickable function to row
             row.addEventListener('click', () => {
                 // Get row data
                 const rowData = row.getElementsByTagName('td');
-                const id = rowData[0].textContent;
-                const nome = rowData[1].textContent;
-                const matricula = rowData[2].textContent;
-                const aniversario = rowData[3].textContent;
-                const curso = rowData[4].textContent;
+                const id = estudante.id;
+                const nome = estudante.nome;
+                const matricula = estudante.matricula;
+                const aniversario = moment(estudante.aniversario).format('YYYY-MM-DD');
+                const curso = estudante.curso;
 
                 // Fill form with data
                 document.getElementById('id').value = id;
