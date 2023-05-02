@@ -26,9 +26,9 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    console.log(formData.entries);
     const data = {};
     for (const [key, value] of formData.entries()) data[key] = value;
+    console.log(data);
     
     axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', JSON.stringify(data), {
 		headers: {
