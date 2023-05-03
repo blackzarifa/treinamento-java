@@ -27,6 +27,14 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
         estudantes.forEach(estudante => {
             // Convert date to a more readable format
             let dataAniversario = moment(estudante.aniversario).format('DD/MM/YYYY');
+            
+            // GET 'nome' using the foreign key
+            let cursoNome;
+            axios.get('http://localhost:8080/treinamento-java/rest/cursos/${estudante.FK_curso}')
+                .then(response => {
+                    cursoNome = response.data.nome;
+                })
+                .catch(e => console.log(e));
 
             // Create object row
             let row = document.createElement('tr');
@@ -35,11 +43,10 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
                             '<td>' + estudante.nome + '</td>' +
                             '<td>' + estudante.matricula + '</td>' +
                             '<td>' + dataAniversario + '</td>' +
-                            '<td>' + estudante.FK_curso + '</td>';
+                            '<td>' + cursoNome + '</td>';
             // Add clickable function to row
             row.addEventListener('click', () => {
                 // Get row data
-                //const rowData = row.getElementsByTagName('td');
                 const id = estudante.id;
                 const nome = estudante.nome;
                 const matricula = estudante.matricula;
