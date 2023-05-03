@@ -50,9 +50,6 @@ const loadTable = async () => {
     }
 }
 
-loadTable();
-
-
 // Function to load select options
 const loadSelect = async () => {
     try {
@@ -76,8 +73,9 @@ const loadSelect = async () => {
     }
 }
 
-loadSelect();
 
+loadTable();
+loadSelect();
 
 
 // POST new values to 'estudante'
