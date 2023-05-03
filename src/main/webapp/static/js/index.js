@@ -35,12 +35,13 @@ const loadTable = async () => {
                 const nome = estudante.nome;
                 const matricula = estudante.matricula;
                 const aniversario = moment(estudante.aniversario).format('YYYY-MM-DD');
-                const curso = estudante.curso;
+                const curso = estudante.FK_curso;
+
                 document.getElementById('id').value = id;
                 document.getElementById('nome').value = nome;
                 document.getElementById('matricula').value = matricula;
                 document.getElementById('aniversario').value = aniversario;
-                document.getElementById('FK_curso').value = curso;
+                document.getElementById('curso-select').value = curso;
             });
 
             table.appendChild(row);
@@ -72,7 +73,6 @@ const loadSelect = async () => {
         console.log(e);
     }
 }
-
 
 loadTable();
 loadSelect();
