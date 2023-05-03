@@ -27,12 +27,12 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
         estudantes.forEach(estudante => {
             // Convert date to a more readable format
             let dataAniversario = moment(estudante.aniversario).format('DD/MM/YYYY');
-            
+
             // GET 'nome' using the foreign key
-            let cursoNome;
-            axios.get('http://localhost:8080/treinamento-java/rest/cursos/${estudante.FK_curso}')
+            let nomeCurso;
+            axios.get(`http://localhost:8080/treinamento-java/rest/cursos/${estudante.FK_curso}`)
                 .then(response => {
-                    cursoNome = response.data.nome;
+                    nomeCurso = response.data.nome;
                 })
                 .catch(e => console.log(e));
 
@@ -43,7 +43,7 @@ axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall')
                             '<td>' + estudante.nome + '</td>' +
                             '<td>' + estudante.matricula + '</td>' +
                             '<td>' + dataAniversario + '</td>' +
-                            '<td>' + cursoNome + '</td>';
+                            '<td>' + nomeCurso + '</td>';
             // Add clickable function to row
             row.addEventListener('click', () => {
                 // Get row data
