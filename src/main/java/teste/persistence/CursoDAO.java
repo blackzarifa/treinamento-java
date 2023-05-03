@@ -123,5 +123,32 @@ public class CursoDAO {
 		
 		return cursos;
 	}
+	
+	// Find by id
+	public CursoBean findById(int id) {
+		ResultSet resultSet = null;
+		CursoBean curso = new CursoBean();
+		
+		try {
+			String queryString = "SELECT * FROM curso WHERE id=?";
+			
+			conn = getConnection();
+			pstm = conn.prepareStatement(queryString);
+			
+			pstm.setInt(1, id);
+			
+			resultSet = pstm.executeQuery();
+			resultSet.next();
+			
+			curso.setId(resultSet.getInt("id"));
+			curso.setNome(resultSet.getString("nome"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(conn,pstm);
+		}
+		
+		return curso;
+	}
 
 }
