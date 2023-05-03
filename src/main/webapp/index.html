@@ -26,7 +26,7 @@
                 <div class="row pb-2 px-5">
                     <div class="col col-2">
                         <label for="id" class="ps-1">ID:</label>
-                        <input type="text" class="form-control" id="id" name="id" placeholder="Novo" disabled>
+                        <input type="text" class="form-control" id="id" name="id" placeholder="Novo Estudante" readonly>
                     </div>
                     <div class="col col-10">
                         <label for="nome" class="ps-1">Nome:</label>
@@ -44,15 +44,14 @@
                         <label for="aniversario" class="ps-1">Data de Aniversário:</label>
                         <input type="date" class="form-control" id="aniversario" name="aniversario" required>
                     </div>
-                    <div class="col col-2">
+                    <div class="col col-3">
                         <label for="curso" class="ps-1">Curso:</label>
-                        <select class="form-select" id="curso-select" name="curso-select" aria-label="Default select example" required>
-                            <option value="1">One</option>
+                        <select class="form-select" id="curso-select" name="FK_curso" aria-label="Default select example" required>
                         </select>
                     </div>
 
                     <!-- Buttons -->
-                    <div class="col col-6 d-flex align-items-end d-md-flex justify-content-md-end">
+                    <div class="col col-5 d-flex align-items-end d-md-flex justify-content-md-end">
                         <button type="submit" class="btn btn-success">Confirmar</button>
                         <button type="button" class="btn btn-danger ms-2">Apagar Dados</button>
                     </div>

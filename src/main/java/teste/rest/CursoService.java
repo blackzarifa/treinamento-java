@@ -7,6 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.PathParam;
 
 import java.util.List;
 
@@ -27,6 +28,14 @@ public class CursoService extends superRest {
 	public List<CursoBean> getAll() {
 		List<CursoBean> cursos = dao.findAll();
 		return cursos;
+	}
+	
+	@Path("/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public CursoBean getById(@PathParam("id") int id) {
+		CursoBean curso = dao.findById(id);
+		return curso;
 	}
 	
 }

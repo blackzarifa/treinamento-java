@@ -46,4 +46,15 @@ public class EstudanteService extends superRest {
 		return Response.ok().build();
 	}
 	
+	@Path("/update")
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response update(EstudanteBean estudante) {
+		EstudanteDAO dao = new EstudanteDAO();
+		dao.update(estudante);
+		
+		return Response.ok().build();
+	}
+	
 }
