@@ -9,6 +9,10 @@ axios.get('http://localhost:8080/treinamento-java/rest/cursos/getall')
         const select = document.getElementById('curso-select');
         cursos.forEach(curso => {
             let option = document.createElement('option');
+            option.value = curso.id;
+            option.text = curso.nome;
+
+            select.appendChild(option);
         })
     })
     .catch(e => console.log(e));
