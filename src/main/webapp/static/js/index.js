@@ -95,6 +95,16 @@ form.addEventListener('submit', (event) => {
     // Check if there's an ID in the form, if so then update a value, if not create a new one
     if ('id' in data) {
         // PUT
+        axios.put('http://localhost:8080/treinamento-java/rest/estudantes/update', JSON.stringify(data), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                console.log(response.data);
+                window.location.reload();
+            })
+            .catch (e => console.log(e));
     } else {
         // POST
         axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', JSON.stringify(data), {
@@ -103,8 +113,7 @@ form.addEventListener('submit', (event) => {
             }
         })
             .then(response => {
-                // For testing comment window reload 
-                   console.log(response.data);
+                console.log(response.data);
                 window.location.reload();
             })
             .catch(e => console.log(e));
