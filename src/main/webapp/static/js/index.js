@@ -2,13 +2,13 @@ const form = document.querySelector('form');
 
 
 // Function to load table with all values
-async function loadTable() {
+const loadTable = async () => {
     try {
         // GET all 'estudante' values
         const getEstudantes = await axios.get('http://localhost:8080/treinamento-java/rest/estudantes/getall');
         const estudantes = getEstudantes.data;
 
-        // Get table in the page
+        // Get table tag and populate it
         const table = document.getElementById('estudantes-table');
         for (const estudante of estudantes) {
             // Convert date to a more readable format
@@ -53,39 +53,56 @@ async function loadTable() {
 loadTable();
 
 
-// Get all from 'curso'
-axios.get('http://localhost:8080/treinamento-java/rest/cursos/getall')
-    .then(response => {
-        const cursos = response.data;
-
+// Function to load select options
+const loadSelect = async () => {
+    try {
+        // GET all 'curso' values
+        const getCursos = await axios.get('http://localhost:8080/treinamento-java/rest/cursos/getall');
+        const cursos = getCursos.data;
+		
+        // Get select tag and populate it
         const select = document.getElementById('curso-select');
-        cursos.forEach(curso => {
+        for(const curso of cursos) {
+            // Create option
             let option = document.createElement('option');
             option.value = curso.id;
             option.text = curso.nome;
 
+            // Append option to select
             select.appendChild(option);
-        })
-    })
-    .catch(e => console.log(e));
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+loadSelect();
+
 
 
 // POST new values to 'estudante'
 form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    // Get values from form
     const formData = new FormData(event.target);
+    // Creat an object with the values
     const data = {};
-    
     for (const [key, value] of formData.entries()) data[key] = value;
-    
+    console.log(data);
+    // Convert value from string to int
     data.FK_curso = parseInt(data.FK_curso);
     
+    // POST
     axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', JSON.stringify(data), {
 		headers: {
             'Content-Type': 'application/json'
         }
 	})
 		.then(response => {
-            console.log(response.data);
+			// For testing comment window reload 
+           	console.log(response.data);
+            window.location.reload();
         })
         .catch(e => console.log(e));
 });
