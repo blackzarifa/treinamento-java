@@ -78,7 +78,7 @@ loadTable();
 loadSelect();
 
 
-// POST new values to 'estudante'
+// POST new values to 'estudante' or PUT in existing values
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -86,21 +86,28 @@ form.addEventListener('submit', (event) => {
     const formData = new FormData(event.target);
     // Creat an object with the values
     const data = {};
-    for (const [key, value] of formData.entries()) data[key] = value;
-    console.log(data);
+    for (const [key, value] of formData.entries()) 
+        if (value !== '') data[key] = value;
+    
     // Convert value from string to int
     data.FK_curso = parseInt(data.FK_curso);
-    
-    // POST
-    axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', JSON.stringify(data), {
-		headers: {
-            'Content-Type': 'application/json'
-        }
-	})
-		.then(response => {
-			// For testing comment window reload 
-           	console.log(response.data);
-            window.location.reload();
+
+    // Check if there's an ID in the form, if so then update a value, if not create a new one
+    if ('id' in data) {
+        // PUT
+    } else {
+        // POST
+        axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', JSON.stringify(data), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
-        .catch(e => console.log(e));
+            .then(response => {
+                // For testing comment window reload 
+                   console.log(response.data);
+                window.location.reload();
+            })
+            .catch(e => console.log(e));
+    }
+    
 });
