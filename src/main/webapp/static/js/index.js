@@ -1,4 +1,10 @@
+// Main form
 const form = document.querySelector('form');
+
+
+// Clear form button
+const clearFormBtn = document.getElementById('clear-form-btn');
+clearFormBtn.addEventListener('click', () => form.reset());
 
 
 // Function to load table with all values
