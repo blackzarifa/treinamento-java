@@ -57,4 +57,14 @@ public class EstudanteService extends superRest {
 		return Response.ok().build();
 	}
 	
+	@Path("/delete")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response delete(EstudanteBean estudante) {
+		EstudanteDAO dao = new EstudanteDAO();
+		dao.delete(estudante);
+		
+		return Response.ok().build();
+	}
+	
 }
