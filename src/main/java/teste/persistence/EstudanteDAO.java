@@ -85,14 +85,14 @@ public class EstudanteDAO {
 	}
 	
 	// Delete from database
-	public void delete(EstudanteBean estudanteBean) {
+	public void delete(int id) {
 		try {
 			String queryString = "DELETE FROM estudante WHERE id=?";
 			
 			conn = getConnection();
 			pstm = conn.prepareStatement(queryString);
 			
-			pstm.setInt(1, estudanteBean.getId());
+			pstm.setInt(1, id);
 			
 			pstm.executeUpdate();
 			System.out.println("Dados deletados.");
