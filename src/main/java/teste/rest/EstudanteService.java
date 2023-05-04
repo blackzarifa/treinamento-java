@@ -15,7 +15,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import java.util.List;
-import java.sql.Date;
 
 
 @Path("/estudantes")
@@ -58,7 +57,7 @@ public class EstudanteService extends superRest {
 		return Response.ok().build();
 	}
 	
-	@Path("/delete/${id}")
+	@Path("/delete/{id}")
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response delete(@PathParam("id") int id) {
