@@ -124,5 +124,20 @@ form.addEventListener('submit', (event) => {
             })
             .catch(e => console.log(e));
     }
-    
+});
+
+
+// DELETE from database
+const deleteDataBtn = document.getElementById('delete-data-btn');
+deleteDataBtn.addEventListener('click', () => {
+    // Get ID in the form
+    const id = document.getElementById('id');
+
+    // DELETE
+    axios.delete(`http://localhost:8080/treinamento-java/rest/estudantes/delete/${id}`)
+        .then(response => {
+            console.log(response.data);
+            window.location.reload();
+        })
+        .catch(e => console.log(e));
 });
