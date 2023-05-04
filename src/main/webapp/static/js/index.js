@@ -131,8 +131,8 @@ form.addEventListener('submit', (event) => {
 const deleteDataBtn = document.getElementById('delete-data-btn');
 deleteDataBtn.addEventListener('click', () => {
     // Get ID in the form
-    const id = document.getElementById('id');
-
+    const id = document.getElementById('id').value;
+    
     // DELETE
     axios.delete(`http://localhost:8080/treinamento-java/rest/estudantes/delete/${id}`)
         .then(response => {
