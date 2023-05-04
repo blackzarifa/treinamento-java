@@ -1,4 +1,10 @@
+// Main form
 const form = document.querySelector('form');
+
+
+// Clear form button
+const clearFormBtn = document.getElementById('clear-form-btn');
+clearFormBtn.addEventListener('click', () => form.reset());
 
 
 // Function to load table with all values
@@ -82,41 +88,71 @@ loadSelect();
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    // Get values from form
-    const formData = new FormData(event.target);
-    // Creat an object with the values
-    const data = {};
-    for (const [key, value] of formData.entries()) 
-        if (value !== '') data[key] = value;
-    
-    // Convert value from string to int
-    data.FK_curso = parseInt(data.FK_curso);
+    // Get values from 'nome and 'matricula'
+    const valueNome = document.getElementById('nome').value.trim();
+    const valueMatricula = document.getElementById('matricula').value.trim();
 
-    // Check if there's an ID in the form, if so then update a value, if not create a new one
-    if ('id' in data) {
-        // PUT
-        axios.put('http://localhost:8080/treinamento-java/rest/estudantes/update', JSON.stringify(data), {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => {
-                console.log(response.data);
-                window.location.reload();
-            })
-            .catch (e => console.log(e));
+    // Check if any of the 2 values are empty
+    if (valueNome === '' || valueMatricula === '') {
+        alert('Por favor, preencha os campos.');
     } else {
-        // POST
-        axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', JSON.stringify(data), {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => {
-                console.log(response.data);
-                window.location.reload();
+        // Get values from form
+        const formData = new FormData(event.target);
+
+        // Creat an object with the values
+        const data = {};
+        for (const [key, value] of formData.entries()) {
+            // If ID is empty, ignore the field
+            if (value === '' && key ==='id')
+                continue; 
+            data[key] = value;
+        } 
+        
+        // Convert value from string to int
+        data.FK_curso = parseInt(data.FK_curso);
+    
+        // Check if there's an ID in the form, if so then update a value, if not create a new one
+        if ('id' in data) {
+            // PUT
+            axios.put('http://localhost:8080/treinamento-java/rest/estudantes/update', JSON.stringify(data), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
-            .catch(e => console.log(e));
+                .then(response => {
+                    console.log(response.data);
+                    window.location.reload();
+                })
+                .catch (e => console.log(e));
+        } else {
+            // POST
+            axios.post('http://localhost:8080/treinamento-java/rest/estudantes/add', JSON.stringify(data), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    console.log(response.data);
+                    window.location.reload();
+                })
+                .catch(e => console.log(e));
+        }
     }
     
+});
+
+
+// DELETE from database
+const deleteDataBtn = document.getElementById('delete-data-btn');
+deleteDataBtn.addEventListener('click', () => {
+    // Get ID in the form
+    const id = document.getElementById('id').value;
+    
+    // DELETE
+    axios.delete(`http://localhost:8080/treinamento-java/rest/estudantes/delete/${id}`)
+        .then(response => {
+            console.log(response.data);
+            window.location.reload();
+        })
+        .catch(e => console.log(e));
 });

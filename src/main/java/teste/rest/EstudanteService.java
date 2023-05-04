@@ -4,6 +4,7 @@ import teste.persistence.EstudanteDAO;
 import teste.entity.EstudanteBean;
 
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -14,7 +15,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import java.util.List;
-import java.sql.Date;
 
 
 @Path("/estudantes")
@@ -53,6 +53,16 @@ public class EstudanteService extends superRest {
 	public Response update(EstudanteBean estudante) {
 		EstudanteDAO dao = new EstudanteDAO();
 		dao.update(estudante);
+		
+		return Response.ok().build();
+	}
+	
+	@Path("/delete/{id}")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response delete(@PathParam("id") int id) {
+		EstudanteDAO dao = new EstudanteDAO();
+		dao.delete(id);
 		
 		return Response.ok().build();
 	}
