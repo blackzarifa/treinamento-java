@@ -36,11 +36,11 @@ class EstudanteBeanTest {
 	}
 	
 	@Test
-	void testConstructor() {
+	void testConstructor_4() {
 		EstudanteBean estudante = new EstudanteBean("test", "000", Date.valueOf("2000-01-01"), 1);
 		
 		Assertions.assertAll(
-				"Constructor",
+				"Constructor_4",
 				() -> assertEquals(0, estudante.getId()),
 				() -> assertEquals("test", estudante.getNome()),
 				() -> assertEquals("000", estudante.getMatricula()),
@@ -48,6 +48,8 @@ class EstudanteBeanTest {
 				() -> assertEquals(1, estudante.getFK_curso())
 			);
 	}
+	
+	
 	
 	@AfterAll
 	static void tearDown() {
