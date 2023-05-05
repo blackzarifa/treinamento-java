@@ -31,12 +31,13 @@ class EstudanteServiceTest {
 	@Test
 	void testGetAll() {
 		EstudanteBean expectedEstudante = new EstudanteBean(1, "João", "01234567", Date.valueOf("2000-01-01"), 1);
+		EstudanteBean actualEstudante = estudanteService.getAll().get(0);
 		
-		List<EstudanteBean> actualEstudantes = estudanteService.getAll();
-		System.out.println(actualEstudantes.get(0));
-		System.out.println(expectedEstudante);
-		
-		Assertions.assertEquals(expectedEstudante, actualEstudantes.get(0));
+		Assertions.assertEquals(expectedEstudante.getId(), actualEstudante.getId(), "'ID' is not equal.");
+		Assertions.assertEquals(expectedEstudante.getNome(), actualEstudante.getNome(), "'Nome' is not equal.");
+		Assertions.assertEquals(expectedEstudante.getMatricula(), actualEstudante.getMatricula(), "'Matricula' is not equal.");
+		Assertions.assertEquals(expectedEstudante.getAniversario(), actualEstudante.getAniversario(), "'Aniversario' is not equal.");
+		Assertions.assertEquals(expectedEstudante.getFK_curso(), actualEstudante.getFK_curso(), "'FK_curso' is not equal.");
 	}
 	
 	@AfterAll
