@@ -49,7 +49,19 @@ class EstudanteBeanTest {
 			);
 	}
 	
-	
+	@Test
+	void testConstructor_5() {
+		EstudanteBean estudante = new EstudanteBean(100, "test", "000", Date.valueOf("2000-01-01"), 1);
+		
+		Assertions.assertAll(
+				"Constructor_5",
+				() -> assertEquals(100, estudante.getId()),
+				() -> assertEquals("test", estudante.getNome()),
+				() -> assertEquals("000", estudante.getMatricula()),
+				() -> assertEquals(Date.valueOf("2000-01-01"), estudante.getAniversario()),
+				() -> assertEquals(1, estudante.getFK_curso())
+			);
+	}
 	
 	@AfterAll
 	static void tearDown() {
