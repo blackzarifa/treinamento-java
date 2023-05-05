@@ -36,6 +36,17 @@ CursoService cursoService;
 			);
 	}
 	
+	@Test
+	void testGetById() {
+		CursoBean expectedCurso = new CursoBean(1, "Ciência da Computação");
+		CursoBean actualCurso = cursoService.getById(1);
+		
+		Assertions.assertAll(
+				() -> assertEquals(expectedCurso.getId(), actualCurso.getId(), "'ID' is not equal."),
+				() -> assertEquals(expectedCurso.getNome(), actualCurso.getNome(), "'Nome' is not equal.")
+			);
+	}
+	
 	@AfterAll
 	static void tearDown() {
 		System.out.println("Finished tests.");
