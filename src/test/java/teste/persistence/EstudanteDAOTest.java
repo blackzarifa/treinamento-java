@@ -5,6 +5,7 @@ import teste.rest.EstudanteService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,5 +25,11 @@ class EstudanteDAOTest {
 	void init() {
 		dao = new EstudanteDAO();
 	}
+	
+	@AfterAll
+	static void tearDown() {
+		System.out.println("Finished tests.");
+	}
+
 	
 }
