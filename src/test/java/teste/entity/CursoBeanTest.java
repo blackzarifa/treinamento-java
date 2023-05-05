@@ -27,6 +27,17 @@ class CursoBeanTest {
 			);
 	}
 	
+	@Test
+	void testConstructor() {
+		CursoBean curso = new CursoBean(100, "test");
+		
+		Assertions.assertAll(
+				"Constructor",
+				() -> assertEquals(100, curso.getId()),
+				() -> assertEquals("test", curso.getNome())
+			);
+	}
+	
 	@AfterAll
 	static void tearDown() {
 		System.out.println("Finished tests.");
