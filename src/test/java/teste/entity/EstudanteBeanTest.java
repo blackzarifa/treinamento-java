@@ -19,14 +19,28 @@ class EstudanteBeanTest {
 	@Test
 	void testGettersAndSetters() {
 		EstudanteBean estudante = new EstudanteBean();
-		estudante.setId(0);
+		estudante.setId(100);
 		estudante.setNome("test");
 		estudante.setMatricula("000");
 		estudante.setAniversario(Date.valueOf("2000-01-01"));
 		estudante.setFK_curso(1);
 		
 		Assertions.assertAll(
-				"EstudanteBean",
+				"GettersAndSetters",
+				() -> assertEquals(100, estudante.getId()),
+				() -> assertEquals("test", estudante.getNome()),
+				() -> assertEquals("000", estudante.getMatricula()),
+				() -> assertEquals(Date.valueOf("2000-01-01"), estudante.getAniversario()),
+				() -> assertEquals(1, estudante.getFK_curso())
+			);
+	}
+	
+	@Test
+	void testConstructor() {
+		EstudanteBean estudante = new EstudanteBean("test", "000", Date.valueOf("2000-01-01"), 1);
+		
+		Assertions.assertAll(
+				"Constructor",
 				() -> assertEquals(0, estudante.getId()),
 				() -> assertEquals("test", estudante.getNome()),
 				() -> assertEquals("000", estudante.getMatricula()),
