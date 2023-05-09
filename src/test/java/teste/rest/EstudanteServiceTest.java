@@ -29,7 +29,8 @@ class EstudanteServiceTest {
 	
 	@Test
 	void testGetAll() {
-		EstudanteBean expectedEstudante = new EstudanteBean(1, "João", "01234567", Date.valueOf("2000-01-01"), 1);
+		EstudanteBean expectedEstudante = new EstudanteBean(
+				1, "João", "01234567", Date.valueOf("2000-01-01"), 1, 3, true);
 		EstudanteBean actualEstudante = estudanteService.getAll().get(0);
 		
 		Assertions.assertAll(
@@ -37,7 +38,9 @@ class EstudanteServiceTest {
 				() -> assertEquals(expectedEstudante.getNome(), actualEstudante.getNome(), "'Nome' is not equal."), 
 				() -> assertEquals(expectedEstudante.getMatricula(), actualEstudante.getMatricula(), "'Matricula' is not equal."),
 				() -> assertEquals(expectedEstudante.getAniversario(), actualEstudante.getAniversario(), "'Aniversario' is not equal."),
-				() -> assertEquals(expectedEstudante.getFK_curso(), actualEstudante.getFK_curso(), "'FK_curso' is not equal.")
+				() -> assertEquals(expectedEstudante.getFK_curso(), actualEstudante.getFK_curso(), "'FK_curso' is not equal."),
+				() -> assertEquals(expectedEstudante.getSemestre(), actualEstudante.getSemestre(), "'Semestre' is not equal."),
+				() -> assertEquals(expectedEstudante.isPresencial(), actualEstudante.isPresencial(), "'Presencial' is not equal.")
 			);
 	}
 	
