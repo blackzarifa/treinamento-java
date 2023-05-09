@@ -126,7 +126,6 @@ public class EstudanteDAO {
 			
 			while (resultSet.next()) {
 				EstudanteBean estudante = new EstudanteBean();
-				
 				estudante.setId(resultSet.getInt("id"));
 				estudante.setNome(resultSet.getString("nome"));
 	            estudante.setMatricula(resultSet.getString("matricula"));
