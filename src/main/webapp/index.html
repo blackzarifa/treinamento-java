@@ -22,20 +22,16 @@
         <!-- Form -->
         <div class="container pb-3 px-5">
             <form>
-                <!-- ID | Name -->
+                <!-- ID | Nome | Matricula | Aniversario-->
                 <div class="row pb-2 px-5">
                     <div class="col col-2">
                         <label for="id" class="ps-1">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Novo Estudante" readonly>
                     </div>
-                    <div class="col col-10">
+                    <div class="col col-6">
                         <label for="nome" class="ps-1">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" placeholder="John Doe" maxlength="64" required>
                     </div>
-                </div>
-                
-                <!-- Matricula | Aniversario | Curso | Submit -->
-                <div class="row pb-2 px-5">
                     <div class="col col-2">
                         <label for="matricula" class="ps-1">Número de Matrícula:</label>
                         <input type="text" class="form-control" id="matricula" name="matricula" placeholder="12345678" maxlength="8" required>
@@ -44,6 +40,10 @@
                         <label for="aniversario" class="ps-1">Data de Aniversário:</label>
                         <input type="date" class="form-control" id="aniversario" name="aniversario" required>
                     </div>
+                </div>
+                
+                <!-- Curso | Semestre | Presencial/EAD | Submit -->
+                <div class="row pb-2 px-5">
                     <div class="col col-3">
                         <label for="curso" class="ps-1">Curso:</label>
                         <select class="form-select" id="curso-select" name="FK_curso" aria-label="Default select example" required>
