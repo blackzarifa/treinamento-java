@@ -7,6 +7,17 @@ const clearFormBtn = document.getElementById('clear-form-btn');
 clearFormBtn.addEventListener('click', () => form.reset());
 
 
+// Make it so checkbox text changes when clicked
+const presencialCheckbox = document.getElementById('presencial');
+const presencialLabel = document.getElementById('presencial-label');
+presencialCheckbox.addEventListener('change', (event) => {
+    if (event.target.checked) 
+        presencialLabel.textContent = 'Ensino Presencial';
+    else
+        presencialLabel.textContent = 'Ensino a Distância';
+});
+
+
 // Function to load table with all values
 const loadTable = async () => {
     try {
@@ -20,9 +31,17 @@ const loadTable = async () => {
             // Convert date to a more readable format
             const dataAniversario = moment(estudante.aniversario).format('DD/MM/YYYY');
 
+            // More reable format of 'presencial'
+            let tipoDeEnsino;
+            if (estudante.presencial)
+                tipoDeEnsino = 'Presencial'
+            else
+                tipoDeEnsino = 'A Distância'
+
             // GET 'curso' values connected with current 'estudante'
             const getCursos = await axios.get(`http://localhost:8080/treinamento-java/rest/cursos/${estudante.FK_curso}`);
             const nomeCurso = getCursos.data.nome;
+
 
             // Create table row
             const row = document.createElement('tr');
@@ -33,8 +52,11 @@ const loadTable = async () => {
                             '<td>' + estudante.nome + '</td>' +
                             '<td>' + estudante.matricula + '</td>' +
                             '<td>' + dataAniversario + '</td>' +
-                            '<td>' + nomeCurso + '</td>';
+                            '<td>' + nomeCurso + '</td>' +
+                            '<td>' + estudante.semestre + '</td>' +
+                            '<td>' + tipoDeEnsino + '</td>';
                         
+
             // Add clickable function to row
             row.addEventListener('click', () => {
                 const id = estudante.id;
@@ -42,12 +64,18 @@ const loadTable = async () => {
                 const matricula = estudante.matricula;
                 const aniversario = moment(estudante.aniversario).format('YYYY-MM-DD');
                 const curso = estudante.FK_curso;
+                const semestre = estudante.semestre;
+                const presencial = estudante.presencial;
 
                 document.getElementById('id').value = id;
                 document.getElementById('nome').value = nome;
                 document.getElementById('matricula').value = matricula;
                 document.getElementById('aniversario').value = aniversario;
                 document.getElementById('curso-select').value = curso;
+                document.getElementById('semestre').value = semestre;
+                document.getElementById('presencial').checked = presencial;
+                // Trigger 'change' event so the checkbox label text changes
+                presencialCheckbox.dispatchEvent(new Event('change'));
             });
 
             table.appendChild(row);
@@ -110,7 +138,14 @@ form.addEventListener('submit', (event) => {
         
         // Convert value from string to int
         data.FK_curso = parseInt(data.FK_curso);
+
+        // Give accurate value to 'presencial' property
+        if (Object.hasOwn(data, 'presencial'))
+            data['presencial'] = true;
+        else
+            data['presencial'] = false;
     
+
         // Check if there's an ID in the form, if so then update a value, if not create a new one
         if ('id' in data) {
             // PUT

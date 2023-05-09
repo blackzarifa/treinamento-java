@@ -42,7 +42,9 @@ public class EstudanteDAO {
 	// Add to database
 	public void add(EstudanteBean estudanteBean) {		
 		try {
-			String queryString = "INSERT INTO estudante(nome, matricula, aniversario, FK_curso) VALUES(?,?,?,?)";
+			String queryString = "INSERT INTO estudante"
+					+ "(nome, matricula, aniversario, FK_curso, semestre, presencial) "
+					+ "VALUES(?,?,?,?)";
 			
 			conn = getConnection();
 			pstm = conn.prepareStatement(queryString);
@@ -51,6 +53,8 @@ public class EstudanteDAO {
 			pstm.setString(2, estudanteBean.getMatricula());
 			pstm.setDate(3, estudanteBean.getAniversario());
 			pstm.setInt(4, estudanteBean.getFK_curso());
+			pstm.setInt(5, estudanteBean.getSemestre());
+			pstm.setBoolean(6, estudanteBean.isPresencial());
 			
 			pstm.executeUpdate();
 			System.out.println("Estudante adicionado.");
@@ -64,7 +68,9 @@ public class EstudanteDAO {
 	// Update database
 	public void update(EstudanteBean estudanteBean) {
 		try {
-			String queryString = "UPDATE estudante SET nome=?, matricula=?, aniversario=?, FK_curso=? WHERE id=?";
+			String queryString = "UPDATE estudante "
+					+ "SET nome=?, matricula=?, aniversario=?, FK_curso=?, semestre=?, presencial=? "
+					+ "WHERE id=?";
 			
 			conn = getConnection();
 			pstm = conn.prepareStatement(queryString);
@@ -73,7 +79,9 @@ public class EstudanteDAO {
 			pstm.setString(2, estudanteBean.getMatricula());
 			pstm.setDate(3, estudanteBean.getAniversario());
 			pstm.setInt(4, estudanteBean.getFK_curso());
-			pstm.setInt(5, estudanteBean.getId());
+			pstm.setInt(5, estudanteBean.getSemestre());
+			pstm.setBoolean(6, estudanteBean.isPresencial());
+			pstm.setInt(7, estudanteBean.getId());
 			
 			pstm.executeUpdate();
 			System.out.println("Estudante atualizado.");
@@ -123,6 +131,9 @@ public class EstudanteDAO {
 	            estudante.setMatricula(resultSet.getString("matricula"));
 	            estudante.setAniversario(resultSet.getDate("aniversario"));
 	            estudante.setFK_curso(resultSet.getInt("FK_curso"));
+	            estudante.setSemestre(resultSet.getInt("semestre"));
+	            estudante.setPresencial(resultSet.getBoolean("presencial"));
+	            
 	            estudantes.add(estudante);
 			}
 		} catch (SQLException e) {

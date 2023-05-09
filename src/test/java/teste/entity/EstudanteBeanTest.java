@@ -24,6 +24,8 @@ class EstudanteBeanTest {
 		estudante.setMatricula("000");
 		estudante.setAniversario(Date.valueOf("2000-01-01"));
 		estudante.setFK_curso(1);
+		estudante.setSemestre(3);
+		estudante.setPresencial(true);
 		
 		Assertions.assertAll(
 				"GettersAndSetters",
@@ -31,13 +33,15 @@ class EstudanteBeanTest {
 				() -> assertEquals("test", estudante.getNome()),
 				() -> assertEquals("000", estudante.getMatricula()),
 				() -> assertEquals(Date.valueOf("2000-01-01"), estudante.getAniversario()),
-				() -> assertEquals(1, estudante.getFK_curso())
+				() -> assertEquals(1, estudante.getFK_curso()),
+				() -> assertEquals(3, estudante.getSemestre()),
+				() -> assertEquals(true, estudante.isPresencial())
 			);
 	}
 	
 	@Test
 	void testConstructor_4() {
-		EstudanteBean estudante = new EstudanteBean("test", "000", Date.valueOf("2000-01-01"), 1);
+		EstudanteBean estudante = new EstudanteBean("test", "000", Date.valueOf("2000-01-01"), 1, 3, true);
 		
 		Assertions.assertAll(
 				"Constructor_4",
@@ -45,13 +49,15 @@ class EstudanteBeanTest {
 				() -> assertEquals("test", estudante.getNome()),
 				() -> assertEquals("000", estudante.getMatricula()),
 				() -> assertEquals(Date.valueOf("2000-01-01"), estudante.getAniversario()),
-				() -> assertEquals(1, estudante.getFK_curso())
+				() -> assertEquals(1, estudante.getFK_curso()),
+				() -> assertEquals(3, estudante.getSemestre()),
+				() -> assertEquals(true, estudante.isPresencial())
 			);
 	}
 	
 	@Test
 	void testConstructor_5() {
-		EstudanteBean estudante = new EstudanteBean(100, "test", "000", Date.valueOf("2000-01-01"), 1);
+		EstudanteBean estudante = new EstudanteBean(100, "test", "000", Date.valueOf("2000-01-01"), 1, 3, true);
 		
 		Assertions.assertAll(
 				"Constructor_5",
@@ -59,7 +65,9 @@ class EstudanteBeanTest {
 				() -> assertEquals("test", estudante.getNome()),
 				() -> assertEquals("000", estudante.getMatricula()),
 				() -> assertEquals(Date.valueOf("2000-01-01"), estudante.getAniversario()),
-				() -> assertEquals(1, estudante.getFK_curso())
+				() -> assertEquals(1, estudante.getFK_curso()),
+				() -> assertEquals(3, estudante.getSemestre()),
+				() -> assertEquals(true, estudante.isPresencial())
 			);
 	}
 	
