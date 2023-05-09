@@ -7,7 +7,7 @@ const clearFormBtn = document.getElementById('clear-form-btn');
 clearFormBtn.addEventListener('click', () => form.reset());
 
 
-// Make
+// Make it so checkbox text changes when clicked
 const presencialCheckbox = document.getElementById('presencial');
 const presencialLabel = document.getElementById('presencial-label');
 presencialCheckbox.addEventListener('change', (event) => {
