@@ -6,10 +6,12 @@ const form = document.querySelector('form');
 const clearFormBtn = document.getElementById('clear-form-btn');
 clearFormBtn.addEventListener('click', () => form.reset());
 
+
+// Make
 const presencialCheckbox = document.getElementById('presencial');
 const presencialLabel = document.getElementById('presencial-label');
-presencialCheckbox.addEventListener('click', () => {
-    if (this.checked) 
+presencialCheckbox.addEventListener('change', (event) => {
+    if (event.target.checked) 
         presencialLabel.textContent = 'Ensino Presencial';
     else
         presencialLabel.textContent = 'Ensino a Distância';
