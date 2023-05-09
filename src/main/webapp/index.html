@@ -34,7 +34,7 @@
                     </div>
                     <div class="col col-2">
                         <label for="matricula" class="ps-1">Número de Matrícula:</label>
-                        <input type="text" class="form-control" id="matricula" name="matricula" placeholder="12345678" maxlength="8" required>
+                        <input type="number" class="form-control" id="matricula" name="matricula" placeholder="12345678" maxlength="8" required>
                     </div>
                     <div class="col col-2">
                         <label for="aniversario" class="ps-1">Data de Aniversário:</label>
@@ -48,6 +48,15 @@
                         <label for="curso" class="ps-1">Curso:</label>
                         <select class="form-select" id="curso-select" name="FK_curso" aria-label="Default select example" required>
                         </select>
+                    </div>
+                    <div class="col col-1">
+                        <label for="semestre" class="ps-1">Semestre:</label>
+                        <input type="number" class="form-control" id="semestre" name="semestre" required>
+                    </div>
+                    <div class="col col-2">
+                        <p class="ps-1">Tipo de Ensino:</p>
+                        <input type="checkbox" class="form-check-input" id="presencial" name="presencial" checked>
+                        <label for="presencial" class="form-check-label">Ensino Presencial</label>
                     </div>
 
                     <!-- Buttons -->
