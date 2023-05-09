@@ -24,6 +24,8 @@ class EstudanteBeanTest {
 		estudante.setMatricula("000");
 		estudante.setAniversario(Date.valueOf("2000-01-01"));
 		estudante.setFK_curso(1);
+		estudante.setSemestre(3);
+		estudante.setPresencial(true);
 		
 		Assertions.assertAll(
 				"GettersAndSetters",
@@ -31,7 +33,9 @@ class EstudanteBeanTest {
 				() -> assertEquals("test", estudante.getNome()),
 				() -> assertEquals("000", estudante.getMatricula()),
 				() -> assertEquals(Date.valueOf("2000-01-01"), estudante.getAniversario()),
-				() -> assertEquals(1, estudante.getFK_curso())
+				() -> assertEquals(1, estudante.getFK_curso()),
+				() -> assertEquals(3, estudante.getSemestre()),
+				() -> assertEquals(true, estudante.isPresencial())
 			);
 	}
 	
