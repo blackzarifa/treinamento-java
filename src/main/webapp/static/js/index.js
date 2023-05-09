@@ -31,9 +31,17 @@ const loadTable = async () => {
             // Convert date to a more readable format
             const dataAniversario = moment(estudante.aniversario).format('DD/MM/YYYY');
 
+            // More reable format of 'presencial'
+            let tipoDeEnsino;
+            if (estudante.presencial)
+                tipoDeEnsino = 'Presencial'
+            else
+                tipoDeEnsino = 'A Distância'
+
             // GET 'curso' values connected with current 'estudante'
             const getCursos = await axios.get(`http://localhost:8080/treinamento-java/rest/cursos/${estudante.FK_curso}`);
             const nomeCurso = getCursos.data.nome;
+
 
             // Create table row
             const row = document.createElement('tr');
@@ -44,8 +52,11 @@ const loadTable = async () => {
                             '<td>' + estudante.nome + '</td>' +
                             '<td>' + estudante.matricula + '</td>' +
                             '<td>' + dataAniversario + '</td>' +
-                            '<td>' + nomeCurso + '</td>';
+                            '<td>' + nomeCurso + '</td>' +
+                            '<td>' + estudante.semestre + '</td>' +
+                            '<td>' + tipoDeEnsino + '</td>';
                         
+
             // Add clickable function to row
             row.addEventListener('click', () => {
                 const id = estudante.id;
