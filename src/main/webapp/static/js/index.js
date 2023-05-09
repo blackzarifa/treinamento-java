@@ -6,6 +6,15 @@ const form = document.querySelector('form');
 const clearFormBtn = document.getElementById('clear-form-btn');
 clearFormBtn.addEventListener('click', () => form.reset());
 
+const presencialCheckbox = document.getElementById('presencial');
+const presencialLabel = document.getElementById('presencial-label');
+presencialCheckbox.addEventListener('click', () => {
+    if (this.checked) 
+        presencialLabel.textContent = 'Ensino Presencial';
+    else
+        presencialLabel.textContent = 'Ensino a Distância';
+});
+
 
 // Function to load table with all values
 const loadTable = async () => {
