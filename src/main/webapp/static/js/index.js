@@ -64,12 +64,16 @@ const loadTable = async () => {
                 const matricula = estudante.matricula;
                 const aniversario = moment(estudante.aniversario).format('YYYY-MM-DD');
                 const curso = estudante.FK_curso;
+                const semestre = estudante.semestre;
+                const presencial = estudante.presencial;
 
                 document.getElementById('id').value = id;
                 document.getElementById('nome').value = nome;
                 document.getElementById('matricula').value = matricula;
                 document.getElementById('aniversario').value = aniversario;
                 document.getElementById('curso-select').value = curso;
+                document.getElementById('semestre').value = semestre;
+                document.getElementById('presencial').checked = presencial;
             });
 
             table.appendChild(row);
@@ -131,9 +135,8 @@ form.addEventListener('submit', (event) => {
         } 
         
         // Convert value from string to int
-        //data.FK_curso = parseInt(data.FK_curso);
+        data.FK_curso = parseInt(data.FK_curso);
 
-    
         // Give accurate value to 'presencial' property
         if (Object.hasOwn(data, 'presencial'))
             data['presencial'] = true;
