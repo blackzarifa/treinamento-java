@@ -131,8 +131,16 @@ form.addEventListener('submit', (event) => {
         } 
         
         // Convert value from string to int
-        data.FK_curso = parseInt(data.FK_curso);
+        //data.FK_curso = parseInt(data.FK_curso);
+
     
+        // Give accurate value to 'presencial' property
+        if (Object.hasOwn(data, 'presencial'))
+            data['presencial'] = true;
+        else
+            data['presencial'] = false;
+    
+
         // Check if there's an ID in the form, if so then update a value, if not create a new one
         if ('id' in data) {
             // PUT
