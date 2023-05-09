@@ -74,6 +74,8 @@ const loadTable = async () => {
                 document.getElementById('curso-select').value = curso;
                 document.getElementById('semestre').value = semestre;
                 document.getElementById('presencial').checked = presencial;
+                // Trigger 'change' event so the checkbox label text changes
+                presencialCheckbox.dispatchEvent(new Event('change'));
             });
 
             table.appendChild(row);
