@@ -4,7 +4,10 @@ const form = document.querySelector('form');
 
 // Clear form button
 const clearFormBtn = document.getElementById('clear-form-btn');
-clearFormBtn.addEventListener('click', () => form.reset());
+clearFormBtn.addEventListener('click', () => {
+    form.reset();
+    presencialCheckbox.dispatchEvent(new Event('change'));
+});
 
 
 // Make it so checkbox text changes when clicked
@@ -136,6 +139,7 @@ form.addEventListener('submit', (event) => {
             data[key] = value;
         } 
         
+
         /* Fixes to data object */
 
         // Limit how many characters in 'nome'
@@ -149,9 +153,10 @@ form.addEventListener('submit', (event) => {
             data['presencial'] = true;
         else
             data['presencial'] = false;
-            
+
         /* -------------------- */
 
+        
         // Check if there's an ID in the form, if so then update a value, if not create a new one
         if ('id' in data) {
             // PUT
