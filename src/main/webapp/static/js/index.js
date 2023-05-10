@@ -4,7 +4,10 @@ const form = document.querySelector('form');
 
 // Clear form button
 const clearFormBtn = document.getElementById('clear-form-btn');
-clearFormBtn.addEventListener('click', () => form.reset());
+clearFormBtn.addEventListener('click', () => {
+    form.reset();
+    presencialCheckbox.dispatchEvent(new Event('change'));
+});
 
 
 // Make it so checkbox text changes when clicked
@@ -126,7 +129,7 @@ form.addEventListener('submit', (event) => {
     } else {
         // Get values from form
         const formData = new FormData(event.target);
-
+        
         // Creat an object with the values
         const data = {};
         for (const [key, value] of formData.entries()) {
@@ -136,16 +139,24 @@ form.addEventListener('submit', (event) => {
             data[key] = value;
         } 
         
-        // Convert value from string to int
-        data.FK_curso = parseInt(data.FK_curso);
 
+        /* Fixes to data object */
+
+        // Limit how many characters in 'nome'
+        data['nome'] = data['nome'].trim().slice(0, 64);
+        // Limit how many characters in 'matricula'
+        data['matricula'] = data['matricula'].trim().slice(0, 8);
+        // Change hour to 12:00 so date won't be modified in the server
+        data['aniversario'] = data['aniversario'] += 'T12:00:00Z';
         // Give accurate value to 'presencial' property
         if (Object.hasOwn(data, 'presencial'))
             data['presencial'] = true;
         else
             data['presencial'] = false;
-    
 
+        /* -------------------- */
+
+        
         // Check if there's an ID in the form, if so then update a value, if not create a new one
         if ('id' in data) {
             // PUT

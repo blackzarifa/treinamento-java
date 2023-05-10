@@ -44,7 +44,7 @@ public class EstudanteDAO {
 		try {
 			String queryString = "INSERT INTO estudante"
 					+ "(nome, matricula, aniversario, FK_curso, semestre, presencial) "
-					+ "VALUES(?,?,?,?)";
+					+ "VALUES(?,?,?,?,?,?)";
 			
 			conn = getConnection();
 			pstm = conn.prepareStatement(queryString);
