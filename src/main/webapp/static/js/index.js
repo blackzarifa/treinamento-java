@@ -126,7 +126,7 @@ form.addEventListener('submit', (event) => {
     } else {
         // Get values from form
         const formData = new FormData(event.target);
-
+        
         // Creat an object with the values
         const data = {};
         for (const [key, value] of formData.entries()) {
@@ -137,8 +137,11 @@ form.addEventListener('submit', (event) => {
         } 
         
         // Convert value from string to int
-        data.FK_curso = parseInt(data.FK_curso);
+        //data.FK_curso = parseInt(data.FK_curso);
 
+        // Small fixes to data object
+        data['nome'] = data['nome'].trim();
+        data['aniversario'] = data['aniversario'] += 'T12:00:00Z';
         // Give accurate value to 'presencial' property
         if (Object.hasOwn(data, 'presencial'))
             data['presencial'] = true;
